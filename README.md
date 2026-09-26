@@ -20,15 +20,17 @@
 
  2. Gameplay Tags In Project Settings -> Gameplay Tags, add a tag for each step that matches the StepTag you set above. Example hierarchy:
 
+ ```
   Tutorial
     Tutorial.Step
       Tutorial.Step.Move
       Tutorial.Step.Jump
       Tutorial.Step.Shoot
+ ```
 
   3. Tutorial UI Widget (UMG) Create a WBP_TutorialHUD Widget Blueprint. This is the popup that shows step info to the player.
 
-  Bind it to the UTutorialComponent events on your character BP:
+  **Bind it to the UTutorialComponent events on your character BP:**
   - On Step Activated -> show the widget, populate Title/Description text
   - On Step Completed -> play a "check" animation or hide
   - On Hint Ready -> reveal the hint text
