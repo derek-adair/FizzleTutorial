@@ -12,7 +12,8 @@
     - StepTag - a Gameplay Tag (e.g. Tutorial.Step.Move, Tutorial.Step.Jump)
     - Title / Description - what the UI shows
     - CompletionType - OverlapVolume, CodeTriggered, TimedAuto, or GameplayEvent
-    - HintText + HintDelaySeconds - optional
+    - HintText  - optional
+    - HintDelaySeconds - optional
     - bMandatory - if it can be skipped
 
   **You need one of these per tutorial sequence.**
