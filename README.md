@@ -59,14 +59,9 @@
 
   Optional but Recommended
 
-  ┌──────────────────────────────────┬───────────────────────────────────────────────────────────────────────────────────────┐
-  │ Asset                            │ Purpose                                                                               │
-  ├──────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────┤
-  │ DA_Tutorial_* naming convention  │ One data asset per tutorial phase (movement, combat, etc.)                            │
-  ├──────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────┤
-  │ WBP_TutorialStep as a sub-widget │ A reusable step card with Title, Description, Icon, progress bar                      │
-  ├──────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────┤
-  │ Save Game integration            │ Store which tutorials have been completed in BSaveGame so they don't replay on reload │
-  ├──────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────┤
-  │ Gameplay Tag table in .ini       │ Add +GameplayTagList entries to DefaultGameplayTags.ini to source-control your tags   │
-  └──────────────────────────────────┴───────────────────────────────────────────────────────────────────────────────────────┘
+| Asset                            | Purpose                                                                              | 
+|----------------------------------|--------------------------------------------------------------------------------------|
+|DA_Tutorial_* naming convention  | One data asset per tutorial phase (movement, combat, etc.)                            |
+|WBP_TutorialStep as a sub-widget | A reusable step card with Title, Description, Icon, progress bar                      |
+|Save Game integration            | Store which tutorials have been completed in BSaveGame so they don't replay on reload |
+|Gameplay Tag table in .ini       | Add +GameplayTagList entries to DefaultGameplayTags.ini to source-control your tags   |
