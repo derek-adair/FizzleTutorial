@@ -2,7 +2,16 @@
 
 #include "TutorialDataAsset.h"
 
-const FTutorialStepData* UTutorialDataAsset::GetStep(int32 Index) const
+FTutorialStepData UTutorialDataAsset::GetStep(int32 Index) const
+{
+	if (Steps.IsValidIndex(Index))
+	{
+		return Steps[Index];
+	}
+	return FTutorialStepData{};
+}
+
+const FTutorialStepData* UTutorialDataAsset::GetStepPtr(int32 Index) const
 {
 	if (Steps.IsValidIndex(Index))
 	{

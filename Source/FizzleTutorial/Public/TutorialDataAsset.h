@@ -1,5 +1,5 @@
 // Copyright Fizzle. All Rights Reserved.
-// TutorialDataAsset.h — Data asset that holds the ordered list of tutorial steps.
+// TutorialDataAsset.h - Data asset that holds the ordered list of tutorial steps.
 //
 // Usage in editor:
 //   Right-click Content Browser → Miscellaneous → Data Asset → TutorialDataAsset
@@ -28,7 +28,7 @@ class FIZZLETUTORIAL_API UTutorialDataAsset : public UPrimaryDataAsset
 	GENERATED_BODY()
 
 public:
-	// ─── Asset Metadata ───────────────────────────────────────────────────────
+	// --- Asset Metadata -------------------------------------------------------
 
 	/** Human-readable name for this tutorial sequence (shown in logs / UI). */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Tutorial")
@@ -38,7 +38,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Tutorial")
 	FText TutorialDescription;
 
-	// ─── Steps ────────────────────────────────────────────────────────────────
+	// --- Steps ----------------------------------------------------------------
 
 	/**
 	 * Ordered list of tutorial steps.
@@ -47,7 +47,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Tutorial", meta = (TitleProperty = "Title"))
 	TArray<FTutorialStepData> Steps;
 
-	// ─── Options ──────────────────────────────────────────────────────────────
+	// --- Options --------------------------------------------------------------
 
 	/**
 	 * If true, the tutorial can be re-played by the player from the pause menu
@@ -70,11 +70,18 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Tutorial|Options", meta = (EditCondition = "bAutoAdvance", ClampMin = "0.0"))
 	float StepTransitionDelay = 0.5f;
 
-	// ─── Helpers ──────────────────────────────────────────────────────────────
+	// --- Helpers --------------------------------------------------------------
 
-	/** Returns the step at the given index, or nullptr if out of range. */
+	/**
+	 * Returns the step at the given index.
+	 * Check IsValidIndex(Index) / GetStepCount() before calling, or use FindStepIndexByTag.
+	 * Returns a default-constructed FTutorialStepData if the index is out of range.
+	 */
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Tutorial")
-	const FTutorialStepData* GetStep(int32 Index) const;
+	FTutorialStepData GetStep(int32 Index) const;
+
+	/** C++-only pointer accessor - avoids a copy when you just need to read fields. */
+	const FTutorialStepData* GetStepPtr(int32 Index) const;
 
 	/** Total number of steps in this tutorial. */
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Tutorial")

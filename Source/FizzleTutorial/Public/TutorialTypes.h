@@ -1,5 +1,5 @@
 // Copyright Fizzle. All Rights Reserved.
-// TutorialTypes.h — Shared enums, structs, and forward declarations for the FizzleTutorial system.
+// TutorialTypes.h - Shared enums, structs, and forward declarations for the FizzleTutorial system.
 
 #pragma once
 
@@ -8,9 +8,9 @@
 #include "GameplayTagContainer.h"
 #include "TutorialTypes.generated.h"
 
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 // Enums
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 
 /** How a tutorial step is completed. */
 UENUM(BlueprintType)
@@ -39,9 +39,9 @@ enum class ETutorialStepState : uint8
 	Skipped		UMETA(DisplayName = "Skipped"),
 };
 
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 // Structs
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 
 /**
  * Data that describes one step in a tutorial sequence.

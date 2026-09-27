@@ -10,9 +10,9 @@ UTutorialComponent::UTutorialComponent()
 	PrimaryComponentTick.bCanEverTick = false;
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 // Lifetime
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 
 void UTutorialComponent::BeginPlay()
 {
@@ -30,9 +30,9 @@ void UTutorialComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
 	Super::EndPlay(EndPlayReason);
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 // Public API
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 
 void UTutorialComponent::NotifyStepTriggered(FGameplayTag StepTag)
 {
@@ -84,9 +84,9 @@ FTutorialStepProgress UTutorialComponent::GetCurrentStepProgress() const
 	return FTutorialStepProgress();
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 // ITutorialTriggerInterface
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 
 void UTutorialComponent::TriggerTutorialStep_Implementation(FGameplayTag StepTag, AActor* Instigator)
 {
@@ -98,9 +98,9 @@ bool UTutorialComponent::CanTriggerTutorial_Implementation() const
 	return bParticipatesInTutorial;
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 // Subsystem binding
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 
 void UTutorialComponent::BindToSubsystem()
 {
@@ -134,9 +134,9 @@ void UTutorialComponent::UnbindFromSubsystem()
 	CachedSubsystem = nullptr;
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Subsystem delegate handlers — bridge to per-actor delegates + BP events
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
+// Subsystem delegate handlers - bridge to per-actor delegates + BP events
+// -----------------------------------------------------------------------------
 
 void UTutorialComponent::HandleStepActivated(const FTutorialStepProgress& Progress)
 {
