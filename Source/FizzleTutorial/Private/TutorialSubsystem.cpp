@@ -64,7 +64,7 @@ void UTutorialSubsystem::CompleteTutorialStep(FGameplayTag OptionalStepTag)
 	//		   e.g. RPG collection quest or something
 	if (OptionalStepTag.IsValid())
 	{
-		const FTutorialStepData* StepData = ActiveTutorial->GetStep(CurrentStepProgress.StepIndex);
+		const FTutorialStepData* StepData = ActiveTutorial->GetStepPtr(CurrentStepProgress.StepIndex);
 		if (!StepData || StepData->StepTag != OptionalStepTag)
 		{
 			UE_LOG(LogTemp, Verbose, TEXT("[FizzleTutorial] CompleteTutorialStep: tag '%s' doesn't match active step '%s'. Ignored."),

@@ -72,9 +72,16 @@ public:
 
 	// ─── Helpers ──────────────────────────────────────────────────────────────
 
-	/** Returns the step at the given index, or nullptr if out of range. */
+	/**
+	 * Returns the step at the given index.
+	 * Check IsValidIndex(Index) / GetStepCount() before calling, or use FindStepIndexByTag.
+	 * Returns a default-constructed FTutorialStepData if the index is out of range.
+	 */
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Tutorial")
-	const FTutorialStepData* GetStep(int32 Index) const;
+	FTutorialStepData GetStep(int32 Index) const;
+
+	/** C++-only pointer accessor — avoids a copy when you just need to read fields. */
+	const FTutorialStepData* GetStepPtr(int32 Index) const;
 
 	/** Total number of steps in this tutorial. */
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Tutorial")
