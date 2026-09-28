@@ -1,5 +1,5 @@
 // Copyright Fizzle. All Rights Reserved.
-// TutorialSubsystem.h — UGameInstanceSubsystem that manages tutorial state at runtime.
+// TutorialSubsystem.h - UGameInstanceSubsystem that manages tutorial state at runtime.
 //
 // Lifetime:  Lives for the entire game instance lifetime (not tied to a level).
 // Access:    UGameInstance::GetSubsystem<UTutorialSubsystem>()
@@ -13,9 +13,9 @@
 #include "TutorialDataAsset.h"
 #include "TutorialSubsystem.generated.h"
 
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 // Dynamic delegates exposed to Blueprints
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 
 /** Fires when a tutorial step becomes active (UI should show the step). */
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnTutorialStepActivated, const FTutorialStepProgress&, StepProgress);
@@ -32,9 +32,9 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnTutorialCompleted, const UTutoria
 /** Fires when a tutorial is aborted / reset before completing. */
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnTutorialReset);
 
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 // Subsystem
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 
 /**
  * UTutorialSubsystem
@@ -54,11 +54,11 @@ class FIZZLETUTORIAL_API UTutorialSubsystem : public UGameInstanceSubsystem
 	GENERATED_BODY()
 
 public:
-	// ─── USubsystem Interface ─────────────────────────────────────────────────
+	// --- USubsystem Interface -------------------------------------------------
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
 	virtual void Deinitialize() override;
 
-	// ─── Public API (Blueprints + C++) ────────────────────────────────────────
+	// --- Public API (Blueprints + C++) ----------------------------------------
 
 	/**
 	 * Begin a tutorial sequence from the given data asset.
@@ -115,7 +115,7 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Tutorial", meta = (WorldContext = "WorldContextObject", DisplayName = "Get Tutorial Subsystem"))
 	static UTutorialSubsystem* GetTutorialSubsystem(const UObject* WorldContextObject);
 
-	// ─── Delegates ────────────────────────────────────────────────────────────
+	// --- Delegates ------------------------------------------------------------
 
 	UPROPERTY(BlueprintAssignable, Category = "Tutorial|Events")
 	FOnTutorialStepActivated OnStepActivated;
@@ -133,7 +133,7 @@ public:
 	FOnTutorialReset OnTutorialReset;
 
 private:
-	// ─── Internal Helpers ─────────────────────────────────────────────────────
+	// --- Internal Helpers -----------------------------------------------------
 
 	void ActivateStep(int32 Index);
 	void AdvanceToNextStep();
@@ -144,7 +144,7 @@ private:
 
 	void ClearTimers();
 
-	// ─── State ────────────────────────────────────────────────────────────────
+	// --- State ----------------------------------------------------------------
 
 	UPROPERTY()
 	TObjectPtr<UTutorialDataAsset> ActiveTutorial = nullptr;

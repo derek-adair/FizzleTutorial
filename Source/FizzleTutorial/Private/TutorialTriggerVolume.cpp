@@ -9,7 +9,7 @@
 
 ATutorialTriggerVolume::ATutorialTriggerVolume()
 {
-	// Volumes are static by default — no tick needed.
+	// Volumes are static by default - no tick needed.
 	PrimaryActorTick.bCanEverTick = false;
 
 	// Generate overlap events on the brush component.

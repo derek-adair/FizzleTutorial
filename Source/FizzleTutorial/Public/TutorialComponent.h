@@ -3,7 +3,7 @@
 //
 // A UActorComponent added to the player character (or any Actor) that:
 //   1. Listens to UTutorialSubsystem delegates and exposes them as per-actor
-//      Blueprint events — so individual characters don't have to wire subsystem
+//      Blueprint events - so individual characters don't have to wire subsystem
 //      delegates themselves.
 //   2. Provides a clean per-character API for triggering steps from gameplay
 //      code (actions, abilities, movement states).
@@ -29,9 +29,9 @@
 
 class UTutorialSubsystem;
 
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 // Per-actor delegates (mirrors the subsystem delegates but fires locally)
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnLocalStepActivated,  const FTutorialStepProgress&, Progress);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnLocalStepCompleted,  const FTutorialStepProgress&, Progress);
@@ -52,15 +52,15 @@ class FIZZLETUTORIAL_API UTutorialComponent : public UActorComponent, public ITu
 public:
 	UTutorialComponent();
 
-	// ─── Lifetime ─────────────────────────────────────────────────────────────
+	// --- Lifetime -------------------------------------------------------------
 	virtual void BeginPlay() override;
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
-	// ─── C++ Trigger API ─────────────────────────────────────────────────────
+	// --- C++ Trigger API -----------------------------------------------------
 
 	/**
 	 * Complete the tutorial step with the given tag.
-	 * Call this from any gameplay code — actions, abilities, movement events.
+	 * Call this from any gameplay code - actions, abilities, movement events.
 	 *
 	 * Example (in a jump action):
 	 *   if (UTutorialComponent* TC = Owner->FindComponentByClass<UTutorialComponent>())
@@ -83,11 +83,11 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Tutorial")
 	FTutorialStepProgress GetCurrentStepProgress() const;
 
-	// ─── ITutorialTriggerInterface ────────────────────────────────────────────
+	// --- ITutorialTriggerInterface --------------------------------------------
 	virtual void TriggerTutorialStep_Implementation(FGameplayTag StepTag, AActor* Instigator) override;
 	virtual bool CanTriggerTutorial_Implementation() const override;
 
-	// ─── Blueprint Events (override in BP for UI feedback) ───────────────────
+	// --- Blueprint Events (override in BP for UI feedback) -------------------
 
 	/**
 	 * Called when a new tutorial step becomes active.
@@ -114,7 +114,7 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, Category = "Tutorial", meta = (DisplayName = "On Tutorial Completed"))
 	void BP_OnTutorialCompleted(const UTutorialDataAsset* TutorialAsset);
 
-	// ─── Assignable delegates (for code-only wiring if BP isn't used) ─────────
+	// --- Assignable delegates (for code-only wiring if BP isn't used) ---------
 
 	UPROPERTY(BlueprintAssignable, Category = "Tutorial|Events")
 	FOnLocalStepActivated OnStepActivated;
@@ -128,7 +128,7 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = "Tutorial|Events")
 	FOnLocalTutorialDone OnTutorialCompleted;
 
-	// ─── Settings ─────────────────────────────────────────────────────────────
+	// --- Settings -------------------------------------------------------------
 
 	/**
 	 * If false, this component will not respond to or fire any tutorial events.

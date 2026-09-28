@@ -1,5 +1,5 @@
 // Copyright Fizzle. All Rights Reserved.
-// FizzleTutorial.h — Module public header (included by dependent modules via PCH).
+// FizzleTutorial.h - Module public header (included by dependent modules via PCH).
 
 #pragma once
 

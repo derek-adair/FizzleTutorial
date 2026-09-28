@@ -10,7 +10,7 @@
 //   1. Place a TutorialTriggerVolume in the level.
 //   2. Set StepTag to match the FTutorialStepData.StepTag you want to complete.
 //   3. Optionally restrict completion to pawns that implement ITutorialTriggerInterface.
-//   4. Press Play — walking through the volume completes the step.
+//   4. Press Play - walking through the volume completes the step.
 
 #pragma once
 
@@ -38,7 +38,7 @@ class FIZZLETUTORIAL_API ATutorialTriggerVolume : public AVolume
 public:
 	ATutorialTriggerVolume();
 
-	// ─── Designer Properties ──────────────────────────────────────────────────
+	// --- Designer Properties --------------------------------------------------
 
 	/**
 	 * The step tag this volume completes.
@@ -75,7 +75,7 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Tutorial|Display")
 	FColor EditorColor = FColor(0, 220, 255, 180);   // cyan
 
-	// ─── Blueprint Events ─────────────────────────────────────────────────────
+	// --- Blueprint Events -----------------------------------------------------
 
 	/**
 	 * Called in BP after this volume successfully triggers the subsystem.
@@ -84,7 +84,7 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, Category = "Tutorial", meta = (DisplayName = "On Tutorial Step Triggered"))
 	void OnTutorialStepTriggered(AActor* TriggeringActor);
 
-	// ─── AVolume / AActor Interface ───────────────────────────────────────────
+	// --- AVolume / AActor Interface -------------------------------------------
 	virtual void BeginPlay() override;
 
 #if WITH_EDITOR

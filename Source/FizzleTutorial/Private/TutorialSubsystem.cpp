@@ -5,9 +5,9 @@
 #include "TimerManager.h"
 #include "Kismet/GameplayStatics.h"
 
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 // USubsystem Interface
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 
 void UTutorialSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
@@ -21,9 +21,9 @@ void UTutorialSubsystem::Deinitialize()
 	Super::Deinitialize();
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 // Public API
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 
 void UTutorialSubsystem::StartTutorial(UTutorialDataAsset* DataAsset, int32 StartIndex)
 {
@@ -137,9 +137,9 @@ void UTutorialSubsystem::ResetTutorial()
 	UE_LOG(LogTemp, Log, TEXT("[FizzleTutorial] Tutorial reset."));
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 // Static Getter
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 
 UTutorialSubsystem* UTutorialSubsystem::GetTutorialSubsystem(const UObject* WorldContextObject)
 {
@@ -157,9 +157,9 @@ UTutorialSubsystem* UTutorialSubsystem::GetTutorialSubsystem(const UObject* Worl
 	return GI->GetSubsystem<UTutorialSubsystem>();
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 // Internal Helpers
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 
 void UTutorialSubsystem::ActivateStep(int32 Index)
 {
@@ -183,14 +183,14 @@ void UTutorialSubsystem::ActivateStep(int32 Index)
 		return;
 	}
 
-	// ── Hint timer ──────────────────────────────────────────────────────────
+	// -- Hint timer ----------------------------------------------------------
 	const float HintDelay = CurrentStepProgress.StepData.HintDelaySeconds;
 	if (HintDelay > 0.f && !CurrentStepProgress.StepData.HintText.IsEmpty())
 	{
 		World->GetTimerManager().SetTimer(HintTimerHandle, this, &UTutorialSubsystem::HandleHintTimer, HintDelay, false);
 	}
 
-	// ── Timed auto-complete ─────────────────────────────────────────────────
+	// -- Timed auto-complete -------------------------------------------------
 	if (CurrentStepProgress.StepData.CompletionType == ETutorialStepCompletionType::TimedAuto)
 	{
 		const float AutoDelay = FMath::Max(0.1f, CurrentStepProgress.StepData.AutoCompleteDelay);

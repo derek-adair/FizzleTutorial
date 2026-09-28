@@ -36,7 +36,7 @@ class UTutorialTriggerInterface : public UInterface
  *      (bRequireInterface on ATutorialTriggerVolume).
  *   2. Proactively trigger a tutorial step from code.
  *
- * ─── C++ usage example (in ACharacter.cpp) ──────────────────────────────────
+ * --- C++ usage example (in ACharacter.cpp) ----------------------------------
  *
  *   // Complete the "Tutorial.Step.FirstJump" step when the player jumps.
  *   void ABCharacter::OnJumped_Implementation()
@@ -45,12 +45,12 @@ class UTutorialTriggerInterface : public UInterface
  *       TriggerTutorialStep(TAG_Tutorial_Step_FirstJump);
  *   }
  *
- * ─── Blueprint usage ─────────────────────────────────────────────────────────
+ * --- Blueprint usage ---------------------------------------------------------
  *
  *   Implement the interface on your BP Character, override TriggerTutorialStep,
  *   and call it from any event graph node.
  *
- * ─────────────────────────────────────────────────────────────────────────────
+ * -----------------------------------------------------------------------------
  */
 class FIZZLETUTORIAL_API ITutorialTriggerInterface
 {
